@@ -2,7 +2,7 @@ const http = require('http')
 const fs = require('fs')
 const path = require('path')
 // const data = require('./data/products');
-const qs = require('querystring')
+// const qs = require('querystring')
 
 // ─── SERVER START ───────────────────────────────────────────────────────────────
 var server = http.createServer(function (request, response) {
@@ -26,28 +26,28 @@ var server = http.createServer(function (request, response) {
           response.end(contents)
         } // error if statment ends
       }) // read file func ends
-    } else if (request.url.match(/.js$/)) {
       // index request end
 
       // js request
+    } else if (request.url.match(/.js$/)) {
       var jsPath = path.join(__dirname, 'public', request.url)
-      var fileStream = fs.createReadStream(jsPath, 'UTF-8')
+      var fileStreamJs = fs.createReadStream(jsPath, 'UTF-8')
       response.writeHead(200, { 'Content-Type': 'text/javascript' })
-      fileStream.pipe(response)
-    } else if (request.url.match(/.css$/)) {
+      fileStreamJs.pipe(response)
       // js request end
 
-      // js request
+      // css request
+    } else if (request.url.match(/.css$/)) {
       var cssPath = path.join(__dirname, 'public', request.url)
-      var fileStream = fs.createReadStream(cssPath, 'UTF-8')
+      var fileStreamCss = fs.createReadStream(cssPath, 'UTF-8')
       response.writeHead(200, { 'Content-Type': 'text/css' })
-      fileStream.pipe(response)
-    } // js request end
-    //
-    // ───────────────────────────────────────────────────── GET  END ─────
-    //
-    // ─── POST ───────────────────────────────────────────────────────────────────────
-    //
+      fileStreamCss.pipe(response)
+    } // css request end
+  //
+  // ───────────────────────────────────────────────────── GET  END ─────
+  //
+  // ─── POST ───────────────────────────────────────────────────────────────────────
+  //
   } else if (request.method === 'POST') {
   }
   //
