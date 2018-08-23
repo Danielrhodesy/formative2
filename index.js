@@ -1,59 +1,25 @@
-const http = require('http')
-const fs = require('fs')
+const express = require('express')
+const app = express()
+// const http = require('http')
+// const fs = require('fs')
 const path = require('path')
 // const data = require('./data/products');
 // const qs = require('querystring')
 
-// ─── SERVER START ───────────────────────────────────────────────────────────────
-var server = http.createServer(function (request, response) {
-  console.log(`${request.method} request for ${request.url}`)
+app.use(function (req, res, next) {
+  console.log(`${req.method} request for ${req.url}`)
+  next()
+})
 
-  // ─── GET ───────────────────────────────────────────────────────────
-  //
-  if (request.method === 'GET') {
-    // index request
-    if (
-      request.url === '/' ||
-      request.url === '/home' ||
-      request.url === '/index' ||
-      request.url === '/index.html'
-    ) {
-      fs.readFile('./public/index.html', 'UTF-8', function (error, contents) {
-        if (error) {
-          console.log('error')
-        } else {
-          response.writeHead(200, { 'Content-Type': 'text/html' })
-          response.end(contents)
-        } // error if statment ends
-      }) // read file func ends
-      // index request end
+app.use(express.static('./public'))
+app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')))
+app.use('/jqueryScript', express.static(path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js')))
 
-      // js request
-    } else if (request.url.match(/.js$/)) {
-      var jsPath = path.join(__dirname, 'public', request.url)
-      var fileStreamJs = fs.createReadStream(jsPath, 'UTF-8')
-      response.writeHead(200, { 'Content-Type': 'text/javascript' })
-      fileStreamJs.pipe(response)
-      // js request end
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/public/index.html')
+})
 
-      // css request
-    } else if (request.url.match(/.css$/)) {
-      var cssPath = path.join(__dirname, 'public', request.url)
-      var fileStreamCss = fs.createReadStream(cssPath, 'UTF-8')
-      response.writeHead(200, { 'Content-Type': 'text/css' })
-      fileStreamCss.pipe(response)
-    } // css request end
-  //
-  // ───────────────────────────────────────────────────── GET  END ─────
-  //
-  // ─── POST ───────────────────────────────────────────────────────────────────────
-  //
-  } else if (request.method === 'POST') {
-  }
-  //
-  // ───────────────────────────────────────────────────────────────── POST END ─────
-  //
-}) // var server end
-// ─────────────────────────────────────────────────────────────── SERVER END ─────
-
-server.listen(3000)
+app.set('port', (process.env.PORT || 3000))
+app.listen(app.get('port'), function () {
+  console.log('Server is running on port ' + app.get('port'))
+})
