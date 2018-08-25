@@ -30,7 +30,8 @@
     "grunt-contrib-livereload": "0.1.2"
   },
   "standard": {
-    "globals": ["$"]
+    "globals": [
+      "$"
+    ]
   }
-
 }
