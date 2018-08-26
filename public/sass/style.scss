@@ -1,11 +1,18 @@
 html, body {
   width: 100%;
+  background: #efffb3;
 }
 body {
   padding: 75px;
 }
 h1 {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial;
-  color: orange;
-  font-size: 120px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #EE54CC;
+  font-size: 75px;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  // text-shadow: 3px 3px 0px #1C6EA4;
+  line-height: 1;
+  margin-bottom: 70px;
 }

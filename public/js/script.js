@@ -25,7 +25,7 @@ $(document).ready(function () {
         console.log(blogData)
         for (let i = 0; i < blogData.items.length; i++) {
           $('#container').append(blogData.items[i].content)
-          $('#container').append('<br>')
+          $('#container').append('<hr>')
         }
       },
       error: function (error) {
