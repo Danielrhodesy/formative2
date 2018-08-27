@@ -24,8 +24,12 @@ $(document).ready(function () {
       success: function (blogData) {
         console.log(blogData)
         for (let i = 0; i < blogData.items.length; i++) {
+          $('#container').append(blogData.items[i].title)
+          $('#container').append('<br>')
+          $('#container').append('<br>')
           $('#container').append(blogData.items[i].content)
           $('#container').append('<hr>')
+
         }
       },
       error: function (error) {
