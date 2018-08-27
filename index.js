@@ -5,6 +5,7 @@ const app = express()
 const path = require('path')
 // const data = require('./data/products');
 // const qs = require('querystring')
+// const {google} = require('googleapis');
 
 app.use(function (req, res, next) {
   console.log(`${req.method} request for ${req.url}`)
@@ -24,3 +25,4 @@ app.set('port', (process.env.PORT || 3000))
 app.listen(app.get('port'), function () {
   console.log('Server is running on port ' + app.get('port'))
 })
+
