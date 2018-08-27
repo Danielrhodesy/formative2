@@ -3,7 +3,7 @@ html, body {
   background: #efffb3; }
 
 body {
-  padding: 75px; }
+  padding: 75px 300px; }
 
 h1 {
   font-family: 'Roboto Condensed', sans-serif;
@@ -14,5 +14,13 @@ h1 {
   transform: rotate(-8deg);
   line-height: 1;
   margin-bottom: 70px; }
+
+h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase; }
+
+p {
+  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Eczar', serif; }
 
 /*# sourceMappingURL=style.css.map */
