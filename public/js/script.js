@@ -1,6 +1,6 @@
 $(document).ready(function () {
   console.log('jq is working')
-  var key 
+  var key
 
   $.ajax({
     url: '/config',
@@ -18,7 +18,7 @@ $(document).ready(function () {
 
   function getBlogData () {
     $.ajax({
-      url: 'https://www.googleapis.com/blogger/v3/blogs/574652991123796122/posts?key=' + key,
+      url: 'https://www.googleapis.com/blogger/v3/blogs/5694525144925559360/posts?key=' + key,
       dataType: 'json',
       type: 'GET',
       success: function (blogData) {
