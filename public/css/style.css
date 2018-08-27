@@ -1,6 +1,12 @@
+html, body {
+  width: 100%; }
+
+body {
+  padding: 75px; }
+
 h1 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial;
   color: orange;
-  font-size: 200px; }
+  font-size: 120px; }
 
 /*# sourceMappingURL=style.css.map */
